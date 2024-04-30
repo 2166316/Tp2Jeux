@@ -7528,7 +7528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3555520848
+  GlobalObjectIdHash: 3369899527
   InScenePlacedSourceGlobalObjectIdHash: 3555520848
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -7579,9 +7579,9 @@ MonoBehaviour:
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 1
-  SyncRotAngleX: 0
-  SyncRotAngleY: 0
-  SyncRotAngleZ: 0
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
@@ -18620,7 +18620,7 @@ Transform:
   m_GameObject: {fileID: 7503993638547617976}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.34, y: 3.12, z: 2.56}
+  m_LocalPosition: {x: -1.97, y: 3.12, z: 2.56}
   m_LocalScale: {x: 1, y: 0.38133, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22684,8 +22684,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 100
+    damper: 50
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -22904,7 +22904,7 @@ Transform:
   m_GameObject: {fileID: 8991013779335322070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9783486, z: -0.20696367, w: 0}
-  m_LocalPosition: {x: -2.3400116, y: 4.750004, z: 9.490004}
+  m_LocalPosition: {x: -2.3400116, y: 4.750004, z: 14.09}
   m_LocalScale: {x: 1, y: 0.381325, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
