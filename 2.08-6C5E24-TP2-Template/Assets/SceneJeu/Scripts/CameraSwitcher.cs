@@ -1,44 +1,61 @@
 using UnityEngine;
-
-public class CameraSwitcher : MonoBehaviour
+using Unity.Netcode;
+public class CameraSwitcher : NetworkBehaviour
 {
-    public Camera firstCamera;
-    public Camera secondCamera;
-    public Camera thirdCamera;
+    private Camera[] cameras;
 
     private int currentCameraIndex = 0;
 
+    public override void OnNetworkSpawn()
+    {
+        if (IsLocalPlayer)
+        {
+            cameras = GetComponentsInChildren<Camera>(true);
+             cameras[0].enabled = true;
+        }
+
+        base.OnNetworkSpawn();
+    }
+
     void Start()
     {
-        SetActiveCamera(1);
+        if (IsLocalPlayer)
+        {
+           // cameras = GetComponentsInChildren<Camera>(true);
+           // cameras[0].enabled = true;
+        }
     }
 
     void Update()
     {
-       
+        if (!IsLocalPlayer)
+            return;
+
+
             if (Input.GetKeyDown(KeyCode.C))
-        {
-            currentCameraIndex = (currentCameraIndex + 1) % 3;
-            SetActiveCamera(currentCameraIndex);
-        }
+            {
+                 currentCameraIndex = (currentCameraIndex + 1) % 3;
+                SetActiveCamera(currentCameraIndex);
+            }
     }
 
     void SetActiveCamera(int index)
     {
-        firstCamera.enabled = false;
-        secondCamera.enabled = false;
-        thirdCamera.enabled = false;
+
+        cameras[0].enabled = false;
+        cameras[1].enabled = false;
+        cameras[2].enabled = false;
 
         switch (index)
         {
             case 0:
-                firstCamera.enabled = true;
+                cameras[0].enabled = true;
                 break;
             case 1:
-                secondCamera.enabled = true;
+                cameras[1].enabled = true;
                 break;
             case 2:
-                thirdCamera.enabled = true;
+                cameras[2].enabled = true;
                 break;
             default:
                 Debug.LogError("Camera invalide");
