@@ -113,7 +113,8 @@ public class PickupController : NetworkBehaviour
         tranform.position = pos;
     }
 
-    public override  void OnNetworkSpawn() { 
-        transform.position = new Vector3(-323,70,40);
+    public override  void OnNetworkSpawn() {
+        transform.position = new Vector3(-323, 70, 40);
+        transform.position = new Vector3(Random.Range(-323, -350), 70, Random.Range(5, 40));
     }
 }
