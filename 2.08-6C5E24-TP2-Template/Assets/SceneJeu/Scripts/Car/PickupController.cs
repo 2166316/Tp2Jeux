@@ -1,5 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
+using System.Collections.Generic;
+using System.Linq;
 public class PickupController : NetworkBehaviour
 {
     public const string HORIZONTAL_AXIS = "Horizontal";
@@ -49,14 +51,14 @@ public class PickupController : NetworkBehaviour
     bool isDead;
 
     public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
+    private readonly List<Color> _colors = new() { Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta, Color.white, Color.black, Color.gray, Color.grey, Color.clear };
     private void DecrementVie()
     {
         
         if (vie != null)
         {
             
-            vie.Value= vie.Value-10;
+            vie.Value = vie.Value-10;
         }
     }
 
@@ -64,10 +66,17 @@ public class PickupController : NetworkBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        
         isDead = false;
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
         Move();
+        Color randomColor = _colors[Random.Range(0, _colors.Count)];
+
+        //random color 
+        GameObject.FindGameObjectsWithTag("Carosserie")
+                  .ToList()
+                  .ForEach(carrosserie => carrosserie.GetComponent<MeshRenderer>().material.SetColor("_Color", randomColor));
     }
 
 
@@ -134,11 +143,11 @@ public class PickupController : NetworkBehaviour
         tranform.position = pos;
     }
 
-    
+
     private void Move()
     {
          // Only the owner client should move the object
-         transform.position = new Vector3(-323, 70, 40);   
+         transform.position = new Vector3(-325, 70, Random.Range(-55,40));   
     }
 
 
@@ -149,6 +158,5 @@ public class PickupController : NetworkBehaviour
 
         DecrementVie();
     }
-
 
 }

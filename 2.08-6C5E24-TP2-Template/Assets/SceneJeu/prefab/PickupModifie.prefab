@@ -7564,6 +7564,11 @@ MonoBehaviour:
   centreOfGravityOffset: -1
   vie:
     m_InternalValue: 100
+  couleur:
+  - {r: 0.9811321, g: 0, b: 0, a: 0}
+  - {r: 0.21140599, g: 1, b: 0, a: 0}
+  - {r: 0.754717, g: 0.024919916, b: 0.61227596, a: 0}
+  - {r: 0.01713243, g: 0.06754636, b: 0.7264151, a: 0}
 --- !u!114 &1619260277055977663
 MonoBehaviour:
   m_ObjectHideFlags: 0

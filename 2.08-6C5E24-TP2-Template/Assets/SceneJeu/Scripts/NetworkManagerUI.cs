@@ -13,7 +13,7 @@ public class NetworkManagerUI : NetworkBehaviour
     [SerializeField] private Button HostButton;
     [SerializeField] private Button ClientButton;
     [SerializeField] private TextMeshProUGUI playerData;
-    [SerializeField] private NetworkVariable<FixedString64Bytes> infoViePlayer = new NetworkVariable<FixedString64Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    [SerializeField] private NetworkVariable<FixedString64Bytes> infoViePlayer = new NetworkVariable<FixedString64Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server); 
 
     private void Awake()
     {
@@ -28,20 +28,19 @@ public class NetworkManagerUI : NetworkBehaviour
         });
     }
 
-    // [Rpc(SendTo.Server)]
     private void Update()
     {
         playerData.text = infoViePlayer.Value.ToString();
-
-        getData();
+        GetData();
     }
 
 
-    public void getData()
+    public void GetData()
     {
         if (!IsServer) return;
         List<NetworkClient> clients = NetworkManager.Singleton.ConnectedClients.Values.ToList();
         string info = "";
+        info += "Nombre de joueurs : " + clients.Count + "\n";
         foreach (NetworkClient client in clients)
         {
             //Debug.Log(client.ClientId);
