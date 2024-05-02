@@ -144,11 +144,15 @@ public class PickupController : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
+
         //Debug.Log(collision.gameObject);
         if (!IsOwner || isDead) return;
 
         DecrementVie();
     }
+
+  
 
 
 }

@@ -8,22 +8,17 @@ public class CameraSwitcher : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+
         if (IsLocalPlayer)
         {
             cameras = GetComponentsInChildren<Camera>(true);
-             cameras[0].enabled = true;
+
+            if (!IsOwner) return;
+
+            cameras[0].enabled = true;
         }
 
         base.OnNetworkSpawn();
-    }
-
-    void Start()
-    {
-        if (IsLocalPlayer)
-        {
-           // cameras = GetComponentsInChildren<Camera>(true);
-           // cameras[0].enabled = true;
-        }
     }
 
     void Update()
