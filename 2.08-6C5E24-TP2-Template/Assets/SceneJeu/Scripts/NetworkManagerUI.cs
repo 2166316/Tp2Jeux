@@ -8,7 +8,7 @@ public class NetworkManagerUI : NetworkBehaviour
     [SerializeField] private Button HostButton;
     [SerializeField] private Button ClientButton;
     [SerializeField] private TextMeshProUGUI playerNum;
-    private readonly NetworkVariable<int> playersCount = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<int> playersCount = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone);
     private void Awake()
     {
         HostButton.onClick.AddListener(() => {
@@ -18,16 +18,12 @@ public class NetworkManagerUI : NetworkBehaviour
         ClientButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartClient();
         });
-
-        playersCount.OnValueChanged += OnPlayerCountChanged;
-    }
-    public void RegisterPlayer()
-    {
-        playersCount.Value++;
     }
 
-    private void OnPlayerCountChanged(int previousValue, int newValue)
+    public void Update()
     {
-        playerNum.text = newValue.ToString();
+       if(!IsServer) return;
+       playersCount.Value = NetworkManager.Singleton.ConnectedClients.Count;
+       playerNum.text = playersCount.Value.ToString();
     }
 }
