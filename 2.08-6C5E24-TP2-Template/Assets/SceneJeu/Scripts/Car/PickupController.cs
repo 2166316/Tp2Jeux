@@ -46,21 +46,41 @@ public class PickupController : NetworkBehaviour
 
     Rigidbody rigidBody;
 
+    bool isDead;
+
+    public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+    private void DecrementVie()
+    {
+        
+        if (vie != null)
+        {
+            
+            vie.Value= vie.Value-10;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
         rigidBody = GetComponent<Rigidbody>();
-
+        isDead = false;
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
-
+        Move();
     }
 
 
     void FixedUpdate()
     {
+        if (vie.Value <= 0)
+        {
+            isDead = true;
+        }
+
         if (!IsOwner) return;
+
+        if(isDead) return;
 
         GetInput();
         HandleMove();
@@ -96,6 +116,7 @@ public class PickupController : NetworkBehaviour
         FLWheelCollider.steerAngle = currentSteerAngle;
         FRWheelCollider.steerAngle = currentSteerAngle;
     }
+
     private void UpdateWheels()
     {
         UpdateWheel(FLWheelCollider, FLWheelTransform);
@@ -113,7 +134,21 @@ public class PickupController : NetworkBehaviour
         tranform.position = pos;
     }
 
-    public override  void OnNetworkSpawn() { 
-        transform.position = new Vector3(-323,70,40);
+    
+    private void Move()
+    {
+         // Only the owner client should move the object
+         transform.position = new Vector3(-323, 70, 40);   
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(collision.gameObject);
+        if (!IsOwner || isDead) return;
+
+        DecrementVie();
+    }
+
+
 }

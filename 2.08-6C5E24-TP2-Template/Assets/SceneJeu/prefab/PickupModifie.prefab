@@ -7419,11 +7419,13 @@ GameObject:
   - component: {fileID: 7936028229592521376}
   - component: {fileID: 1989697638380802854}
   - component: {fileID: 3403940298954454647}
-  - component: {fileID: 4479764427532923075}
   - component: {fileID: 1882027982110718451}
+  - component: {fileID: 4479764427532923075}
   - component: {fileID: 5922633251592703279}
   - component: {fileID: 1619260277055977663}
   - component: {fileID: 7230417882508244441}
+  - component: {fileID: 8524351782580463104}
+  - component: {fileID: -4262163754997444838}
   m_Layer: 0
   m_Name: PickupModifie
   m_TagString: Player
@@ -7499,23 +7501,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.3273697, y: 2.8942673, z: 10.088013}
-  m_Center: {x: -2.097351, y: 1.9825562, z: 4.740966}
---- !u!114 &4479764427532923075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3318769869977534889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957ff17129f1ffe4aa885469c716e6d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstCamera: {fileID: 1841832874037744780}
-  secondCamera: {fileID: 8293424818724373282}
-  thirdCamera: {fileID: 1553425401720596834}
+  m_Size: {x: 3.3273697, y: 2.627974, z: 10.088014}
+  m_Center: {x: -2.097351, y: 2.1157029, z: 4.740966}
 --- !u!114 &1882027982110718451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7537,6 +7524,18 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &4479764427532923075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318769869977534889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957ff17129f1ffe4aa885469c716e6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5922633251592703279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7563,6 +7562,8 @@ MonoBehaviour:
   brakeForce: 10000
   maxSteeringAngle: 40
   centreOfGravityOffset: -1
+  vie:
+    m_InternalValue: 100
 --- !u!114 &1619260277055977663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7606,6 +7607,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8524351782580463104
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318769869977534889}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7211483bbd794b6d85ed88576e7d85c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4262163754997444838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318769869977534889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90105da5e8e055f4ba2ea937eaccd734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 8524351782580463104}
 --- !u!1 &3337546217391924246
 GameObject:
   m_ObjectHideFlags: 0
@@ -23095,8 +23131,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.7807083, y: 1.6943235, z: 0.29320908}
-  m_Center: {x: -2.1477966, y: 1.4202068, z: -0.37248802}
+  m_Size: {x: 3.1912231, y: 1.3625526, z: 0.16517073}
+  m_Center: {x: -2.077179, y: 1.4350605, z: -0.3084688}
 --- !u!1 &9065193991574765627
 GameObject:
   m_ObjectHideFlags: 0
