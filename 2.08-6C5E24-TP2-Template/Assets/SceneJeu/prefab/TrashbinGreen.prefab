@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 3089747336022247348}
   - component: {fileID: 6820798806944580635}
   - component: {fileID: 3809873576828213765}
-  - component: {fileID: 6484145634611708405}
-  - component: {fileID: 4186489551660960404}
+  - component: {fileID: 3420404991465974573}
+  - component: {fileID: 2867392007616684385}
   m_Layer: 0
   m_Name: TrashbinGreen
   m_TagString: Untagged
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3595399409
+  GlobalObjectIdHash: 3194752280
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -264,7 +264,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &6484145634611708405
+--- !u!114 &3420404991465974573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7880681076957643140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c6b8b78f433248438a11b7801adaf38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseUnreliableDeltas: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &4186489551660960404
+--- !u!114 &2867392007616684385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
