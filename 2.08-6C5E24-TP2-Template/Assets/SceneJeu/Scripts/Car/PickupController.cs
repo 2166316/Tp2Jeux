@@ -55,7 +55,6 @@ public class PickupController : NetworkBehaviour
     bool isDead;
 
     public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private readonly List<Color> _colors = new() { Color.red, Color.green, Color.yellow, Color.cyan, Color.magenta, Color.white, Color.black, Color.gray, Color.grey, Color.clear };
     private NetworkVariable<Color> colorNetwork = new();
     private void DecrementVie()
     {

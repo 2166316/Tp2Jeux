@@ -1,7 +1,8 @@
 
+using Mirror;
 using UnityEngine;
 
-public class WheelControl : MonoBehaviour
+public class WheelControl : NetworkBehaviour
 {
     public Transform wheelModel;
 
