@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class InstanciateDebris : NetworkBehaviour
 {
@@ -36,7 +37,7 @@ public class InstanciateDebris : NetworkBehaviour
             NetworkObject networkObject = poubelle.GetComponent<NetworkObject>();
             if (networkObject != null)
             {
-                
+
                 networkObject.Spawn();
                
             }
