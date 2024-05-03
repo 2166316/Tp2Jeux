@@ -26,7 +26,7 @@ public class InstanciateDebris : NetworkBehaviour
         }    
     }
 
-    //pc(SendTo.Server)]
+
     private void InstantiePoubelles()
     {
         Debug.Log("Spawn");

@@ -68,7 +68,7 @@ public class PickupController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();;
         if (!colorNetwork.Value.IsUnityNull())
         {
             foreach (var c in carrosserie.GetComponentsInChildren<Renderer>())

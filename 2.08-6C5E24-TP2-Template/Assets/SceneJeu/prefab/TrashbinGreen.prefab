@@ -120,10 +120,11 @@ GameObject:
   - component: {fileID: 6820798806944580635}
   - component: {fileID: 3809873576828213765}
   - component: {fileID: 3420404991465974573}
+  - component: {fileID: 6506767293084873450}
   - component: {fileID: 2867392007616684385}
   m_Layer: 0
   m_Name: TrashbinGreen
-  m_TagString: Untagged
+  m_TagString: Poubelle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +259,7 @@ MonoBehaviour:
   GlobalObjectIdHash: 3194752280
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
+  SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
@@ -295,6 +296,18 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &6506767293084873450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880681076957643140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f40b736dcc1c8f4aa03819d0dfea8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2867392007616684385
 MonoBehaviour:
   m_ObjectHideFlags: 0
