@@ -1118,7 +1118,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539719706204493098}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -7562,13 +7562,9 @@ MonoBehaviour:
   brakeForce: 10000
   maxSteeringAngle: 40
   centreOfGravityOffset: -1
+  carrosserie: {fileID: 2710368576601021705}
   vie:
     m_InternalValue: 100
-  couleur:
-  - {r: 0.9811321, g: 0, b: 0, a: 0}
-  - {r: 0.21140599, g: 1, b: 0, a: 0}
-  - {r: 0.754717, g: 0.024919916, b: 0.61227596, a: 0}
-  - {r: 0.01713243, g: 0.06754636, b: 0.7264151, a: 0}
 --- !u!114 &1619260277055977663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18674,7 +18670,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7503993638547617976}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -22958,7 +22954,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8991013779335322070}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}

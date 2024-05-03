@@ -48,10 +48,13 @@ public class PickupController : NetworkBehaviour
 
     Rigidbody rigidBody;
 
+    public GameObject carrosserie;
+
     bool isDead;
 
     public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private readonly List<Color> _colors = new() { Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta, Color.white, Color.black, Color.gray, Color.grey, Color.clear };
+    private readonly List<Color> _colors = new() { Color.red, Color.green, Color.yellow, Color.cyan, Color.magenta, Color.white, Color.black, Color.gray, Color.grey, Color.clear };
+    private NetworkVariable<Color> colorNetwork = new();
     private void DecrementVie()
     {
         
@@ -71,14 +74,25 @@ public class PickupController : NetworkBehaviour
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
         Move();
-        Color randomColor = _colors[Random.Range(0, _colors.Count)];
-
+        ChangeColorRPC();
+        colorNetwork.OnValueChanged += OnChangeColor;
         //random color 
-        GameObject.FindGameObjectsWithTag("Carosserie")
-                  .ToList()
-                  .ForEach(carrosserie => carrosserie.GetComponent<MeshRenderer>().material.SetColor("_Color", randomColor));
+
     }
 
+    void OnChangeColor(Color prevColor, Color curColor)
+    {
+        foreach (var c in carrosserie.GetComponentsInChildren<Renderer>()) 
+        {
+            c.material.color = curColor;
+        }
+    } 
+
+    [Rpc(SendTo.Server)]
+    void ChangeColorRPC()
+    {
+        colorNetwork.Value = Random.ColorHSV();//_colors[(int)OwnerClientId];
+    }
 
     void FixedUpdate()
     {
