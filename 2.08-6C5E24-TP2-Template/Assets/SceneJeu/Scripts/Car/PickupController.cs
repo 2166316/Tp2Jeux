@@ -3,6 +3,7 @@ using Unity.Netcode;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class PickupController : NetworkBehaviour
 {
@@ -104,16 +105,20 @@ public class PickupController : NetworkBehaviour
         colorNetwork.Value = Random.ColorHSV();
     }
 
+    
+
     void FixedUpdate()
     {
+        if (isDead) { transform.transform.position += new Vector3(0, 1f, 0); return; };
+
         if (vie.Value <= 0)
         {
-            isDead = true;
+            Debug.LogWarning("push");
+            isDead = true;  
         }
 
         if (!IsOwner) return;
 
-        if(isDead) return;
 
         GetInput();
         HandleMove();
