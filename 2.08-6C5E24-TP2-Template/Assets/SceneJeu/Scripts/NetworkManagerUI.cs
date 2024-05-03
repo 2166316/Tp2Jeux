@@ -13,7 +13,7 @@ public class NetworkManagerUI : NetworkBehaviour
     [SerializeField] private Button HostButton;
     [SerializeField] private Button ClientButton;
     [SerializeField] private TextMeshProUGUI playerData;
-    [SerializeField] private NetworkVariable<FixedString64Bytes> infoViePlayer = new NetworkVariable<FixedString64Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server); 
+    [SerializeField] private NetworkVariable<FixedString4096Bytes> infoViePlayer = new NetworkVariable<FixedString4096Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server); 
 
     private void Awake()
     {

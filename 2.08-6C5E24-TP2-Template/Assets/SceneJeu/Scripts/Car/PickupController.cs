@@ -2,6 +2,8 @@ using UnityEngine;
 using Unity.Netcode;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
+
 public class PickupController : NetworkBehaviour
 {
     public const string HORIZONTAL_AXIS = "Horizontal";
@@ -60,7 +62,6 @@ public class PickupController : NetworkBehaviour
         
         if (vie != null)
         {
-            
             vie.Value = vie.Value-10;
         }
     }
@@ -69,14 +70,24 @@ public class PickupController : NetworkBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        
+        if (!colorNetwork.Value.IsUnityNull())
+        {
+            foreach (var c in carrosserie.GetComponentsInChildren<Renderer>())
+            {
+                c.material.color = colorNetwork.Value;
+            }
+        }
         isDead = false;
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
         Move();
-        ChangeColorRPC();
         colorNetwork.OnValueChanged += OnChangeColor;
-        //random color 
+        if(IsOwner)
+        {
+            ChangeColorRPC();
+        }
+        
+        
 
     }
 
@@ -91,7 +102,7 @@ public class PickupController : NetworkBehaviour
     [Rpc(SendTo.Server)]
     void ChangeColorRPC()
     {
-        colorNetwork.Value = Random.ColorHSV();//_colors[(int)OwnerClientId];
+        colorNetwork.Value = Random.ColorHSV();
     }
 
     void FixedUpdate()
