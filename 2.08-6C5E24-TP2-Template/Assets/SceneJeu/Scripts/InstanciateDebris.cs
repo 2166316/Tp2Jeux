@@ -22,12 +22,12 @@ public class InstanciateDebris : NetworkBehaviour
 
         if (IsHost)
         {
-            InstantiePoubellesServerRpc();
+            InstantiePoubelles();
         }    
     }
 
-    [Rpc(SendTo.Server)]
-    private void InstantiePoubellesServerRpc()
+    //pc(SendTo.Server)]
+    private void InstantiePoubelles()
     {
         Debug.Log("Spawn");
         foreach (Vector3 t in listDePositionPredefinie)
