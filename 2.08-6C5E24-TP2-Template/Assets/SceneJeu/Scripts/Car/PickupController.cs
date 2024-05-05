@@ -56,10 +56,12 @@ public class PickupController : NetworkBehaviour
     bool isDead;
 
     public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
     private NetworkVariable<Color> colorNetwork = new();
-    private void DecrementVie()
+    public void DecrementVie()
     {
-        
+        if (!IsOwner) return;
+
         if (vie != null)
         {
             vie.Value = vie.Value-10;
@@ -179,15 +181,40 @@ public class PickupController : NetworkBehaviour
          transform.position = new Vector3(-325, 70, Random.Range(-55,40));   
     }
 
+    //activé seulement si istrigger est a true sur le collider (parechoc)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!IsOwner || isDead) return;
+        Debug.Log(other.gameObject);
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("1");
+            AttackOtherPlayer(other.gameObject.gameObject);
+        }
+
+        if (other.gameObject.tag == "Parechoc")
+        {
+            Debug.Log("2");
+            DecrementVie();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-
-        //Debug.Log(collision.gameObject);
-        if (!IsOwner || isDead) return;
-
-        DecrementVie();
+      
     }
 
+    private void AttackOtherPlayer(GameObject otherPlayer)
+    {
+        PickupController other = otherPlayer.gameObject.GetComponent<PickupController>();
+        if (other != null)
+        {
+            other.DecrementVie();
+        };
+    }
+
+    
+
 }
+

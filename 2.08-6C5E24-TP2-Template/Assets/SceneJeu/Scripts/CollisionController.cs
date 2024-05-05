@@ -20,11 +20,11 @@ public class CollisionController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsServer)
+        if(IsServer  )
         {
             foreach(var player in NetworkManager.ConnectedClients)
             {
-                foreach(var objectss in objects)
+                foreach(NetworkObject objectss in objects)
                 {
                     float distanceV = Vector3.Distance(player.Value.PlayerObject.transform.position, objectss.gameObject.transform.position);
                     if (distanceV < distance) objectss.ChangeOwnership(player.Value.ClientId);
@@ -36,6 +36,5 @@ public class CollisionController : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
     }
 }

@@ -30,7 +30,7 @@ public class InstanciateDebris : NetworkBehaviour
 
     private void InstantiePoubelles()
     {
-        Debug.Log("Spawn");
+       // Debug.Log("Spawn");
         foreach (Vector3 t in listDePositionPredefinie)
         {
             GameObject poubelle = Instantiate(bacPoubelle, t, new Quaternion(0f,180f,0f,0f));
