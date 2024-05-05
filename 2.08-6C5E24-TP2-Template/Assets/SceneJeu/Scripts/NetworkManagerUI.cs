@@ -45,7 +45,16 @@ public class NetworkManagerUI : NetworkBehaviour
         {
             //Debug.Log(client.ClientId);
             //Debug.Log(client.PlayerObject.GetComponent<PickupController>().vie.Value);
-            info += "Player " + client.ClientId + " : " + client.PlayerObject.GetComponent<PickupController>().vie.Value + "\n";
+            if (client.PlayerObject.GetComponent<PickupController>().vie.Value >0)
+            {
+                info += "Player " + client.ClientId + " : " + client.PlayerObject.GetComponent<PickupController>().vie.Value + "\n";
+            }
+            else
+            {
+                info += "Player " + client.ClientId + " : Dead \n";
+            }
+            
+            
         }
         infoViePlayer.Value = info;
         

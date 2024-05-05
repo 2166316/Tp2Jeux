@@ -185,17 +185,16 @@ public class PickupController : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!IsOwner || isDead) return;
-        Debug.Log(other.gameObject);
-        Debug.Log(other.gameObject.tag);
+ 
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("1");
+
             AttackOtherPlayer(other.gameObject.gameObject);
         }
 
         if (other.gameObject.tag == "Parechoc")
         {
-            Debug.Log("2");
+        
             DecrementVie();
         }
     }
