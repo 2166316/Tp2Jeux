@@ -12,6 +12,7 @@ TagManager:
   - Car
   - Poubelle
   - BoxspawnTrigger
+  - Clapeur
   layers:
   - Default
   - TransparentFX

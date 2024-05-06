@@ -20,7 +20,7 @@ public class CollisionController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsServer  )
+        if(IsServer)
         {
             foreach(var player in NetworkManager.ConnectedClients)
             {

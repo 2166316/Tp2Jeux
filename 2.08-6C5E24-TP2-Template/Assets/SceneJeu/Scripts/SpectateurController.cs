@@ -1,27 +1,33 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpectateurController : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField]
+    private List<Animator> animators;
+    private void Start()
     {
-        
+        GameObject.FindGameObjectsWithTag("Clapeur").ToList().ForEach(clapeur => animators.Add(clapeur.GetComponent<Animator>()));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log("collision");
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Collision");
+            foreach (Animator animator in animators)
+            {
+                if (animator != null)
+                {
+                    animator.SetTrigger("clapTrigger");
+                }
+            }
         }
-    }
+    }    
 }
+
