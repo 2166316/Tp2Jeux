@@ -55,7 +55,7 @@ public class PickupController : NetworkBehaviour
     public List<Vector3> posVector3;
     bool isDead;
 
-    public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<int> vie = new();
     private NetworkVariable<Vector3> posNetwork = new();
     private NetworkVariable<Color> colorNetwork = new();
     
