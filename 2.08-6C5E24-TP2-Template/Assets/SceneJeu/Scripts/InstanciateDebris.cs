@@ -9,6 +9,7 @@ public class InstanciateDebris : NetworkBehaviour
     [SerializeField] public GameObject spectateur;
     [SerializeField] private List<Vector3> listDePositionPredefinie;
     [SerializeField] private List<Vector3> listDePositionSpectateur;
+
     public override void OnNetworkSpawn()
     {
     
