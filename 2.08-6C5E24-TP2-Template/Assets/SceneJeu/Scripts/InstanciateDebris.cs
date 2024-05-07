@@ -11,7 +11,7 @@ public class InstanciateDebris : NetworkBehaviour
     [SerializeField] private List<Vector3> listDePositionSpectateur;
     public override void OnNetworkSpawn()
     {
-       // Debug.Log("spawn");
+    
         listDePositionPredefinie = new List<Vector3>
         {
             new Vector3(-360.3016f, 69.86519f, 56.70361f),
@@ -42,7 +42,7 @@ public class InstanciateDebris : NetworkBehaviour
 
     private void InstantiePoubelles()
     {
-       // Debug.Log("Spawn");
+
         foreach (Vector3 t in listDePositionPredefinie)
         {
             GameObject poubelle = Instantiate(bacPoubelle, t, new Quaternion(0f,180f,0f,0f));

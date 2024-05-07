@@ -1,7 +1,8 @@
-using Mirror;
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,24 +10,22 @@ public class SpectateurController : NetworkBehaviour
 {
 
     [SerializeField]
-    private List<Animator> animators;
+    private List<Animator> animators = new();
     private void Start()
     {
-        GameObject.FindGameObjectsWithTag("Clapeur").ToList().ForEach(clapeur => animators.Add(clapeur.GetComponent<Animator>()));
+       
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision");
-        if (other.CompareTag("Player"))
+        GameObject.FindGameObjectsWithTag("Clapeur").ToList().ForEach(clapeur => animators.Add(clapeur.GetComponent<Animator>()));
+  
+        foreach (Animator animator in animators)
         {
-            foreach (Animator animator in animators)
+            if (animator != null)
             {
-                if (animator != null)
-                {
-                    animator.SetTrigger("clapTrigger");
-                }
-            }
+                animator.SetTrigger("clapTrigger");
+            } 
         }
     }    
 }
