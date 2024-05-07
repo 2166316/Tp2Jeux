@@ -27,6 +27,19 @@ public class SpectateurController : NetworkBehaviour
                 animator.SetTrigger("clapTrigger");
             } 
         }
-    }    
+    }
+   
+    public void OnTriggerExit(Collider other)
+    {
+        GameObject.FindGameObjectsWithTag("Clapeur").ToList().ForEach(clapeur => animators.Add(clapeur.GetComponent<Animator>()));
+
+        foreach (Animator animator in animators)
+        {
+            if (animator != null)
+            {
+                animator.SetTrigger("clapTrigger");
+            }
+        }
+    }
 }
 
