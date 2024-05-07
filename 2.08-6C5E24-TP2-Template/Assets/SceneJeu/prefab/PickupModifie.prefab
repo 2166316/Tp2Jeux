@@ -7547,7 +7547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3369899527
+  GlobalObjectIdHash: 3555520848
   InScenePlacedSourceGlobalObjectIdHash: 3555520848
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -7595,6 +7595,10 @@ MonoBehaviour:
   maxSteeringAngle: 40
   centreOfGravityOffset: -1
   carrosserie: {fileID: 2710368576601021705}
+  posVector3:
+  - {x: -325, y: 70, z: 16}
+  - {x: -400, y: 70, z: 10}
+  - {x: -281, y: 70, z: 10}
   vie:
     m_InternalValue: 100
 --- !u!114 &1619260277055977663

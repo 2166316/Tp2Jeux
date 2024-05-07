@@ -52,12 +52,13 @@ public class PickupController : NetworkBehaviour
     Rigidbody rigidBody;
 
     public GameObject carrosserie;
-
+    public List<Vector3> posVector3;
     bool isDead;
 
     public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
+    private NetworkVariable<Vector3> posNetwork = new();
     private NetworkVariable<Color> colorNetwork = new();
+    
     public void DecrementVie()
     {
         if (!IsOwner) return;
@@ -82,14 +83,13 @@ public class PickupController : NetworkBehaviour
         isDead = false;
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
-        Move();
         colorNetwork.OnValueChanged += OnChangeColor;
-        if(IsOwner)
+        posNetwork.OnValueChanged += OnCurrentSpawn;
+        if (IsOwner)
         {
             ChangeColorRPC();
+            SpawnClientRPC();
         }
-        
-        
 
     }
 
@@ -99,7 +99,12 @@ public class PickupController : NetworkBehaviour
         {
             c.material.color = curColor;
         }
-    } 
+    }
+
+    public void OnCurrentSpawn(Vector3 previous, Vector3 current)
+    {
+        transform.position = current;
+    }
 
     [Rpc(SendTo.Server)]
     void ChangeColorRPC()
@@ -107,7 +112,13 @@ public class PickupController : NetworkBehaviour
         colorNetwork.Value = Random.ColorHSV();
     }
 
-    
+    [Rpc(SendTo.Server)]
+    void SpawnClientRPC()
+    {
+        Vector3 posRandom = posVector3[Random.Range(0, posVector3.Count)];
+        posVector3.Remove(posRandom);
+        posNetwork.Value = posRandom;
+    }
 
     void FixedUpdate()
     {
@@ -174,12 +185,6 @@ public class PickupController : NetworkBehaviour
         tranform.position = pos;
     }
 
-
-    private void Move()
-    {
-         // Only the owner client should move the object
-         transform.position = new Vector3(-325, 70, Random.Range(-55,40));   
-    }
 
     //activé seulement si istrigger est a true sur le collider (parechoc)
     private void OnTriggerEnter(Collider other)
