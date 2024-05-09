@@ -52,7 +52,15 @@ public class PickupController : NetworkBehaviour
     Rigidbody rigidBody;
 
     public GameObject carrosserie;
-    public List<Vector3> posVector3;
+    public static List<Vector3> posVector3 = new List<Vector3>()
+    {
+        new Vector3(-400f, 70f, 50f),
+        new Vector3(-281f, 70f, 10f),
+        new Vector3(-350f, 70f, -12f),
+        new Vector3(-209f, 70f, 58f),
+        new Vector3(-370f, 70f, 58f),
+        new Vector3(-324f, 70f, 14f)
+    };
     bool isDead;
 
     public NetworkVariable<int> vie = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
