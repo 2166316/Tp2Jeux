@@ -24,7 +24,8 @@ public class CollisionController : NetworkBehaviour
         {
             foreach(var player in NetworkManager.ConnectedClients)
             {
-                foreach(NetworkObject objectss in objects)
+                if (player.Value.PlayerObject == null) continue;
+                foreach (NetworkObject objectss in objects)
                 {
                     float distanceV = Vector3.Distance(player.Value.PlayerObject.transform.position, objectss.gameObject.transform.position);
                     if (distanceV < distance) objectss.ChangeOwnership(player.Value.ClientId);
