@@ -21,8 +21,13 @@ public class CameraSwitcher : NetworkBehaviour
 
             cameras[0].enabled = true;
         }
-        cameras.Add(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>());
+        if (cameras != null)
+        {
+            cameras.Add(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>());
+            base.OnNetworkSpawn();
+        }
         base.OnNetworkSpawn();
+
     }
 
     void Update()

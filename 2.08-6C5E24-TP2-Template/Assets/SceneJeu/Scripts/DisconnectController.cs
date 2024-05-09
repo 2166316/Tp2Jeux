@@ -3,7 +3,7 @@ using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
-public class DisconnectController : MonoBehaviour
+public class DisconnectController : NetworkBehaviour
 {
     public void LoadScene(string name)
     {
@@ -20,13 +20,14 @@ public class DisconnectController : MonoBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void TestServerRPC(ServerRpcParams serverRpcParams = default)
     {
+        
         var clientId = serverRpcParams.Receive.SenderClientId;
         Debug.Log("id : " + clientId);
         NetworkObject clientPickup = NetworkManager.Singleton.ConnectedClients.Values.ToList().FirstOrDefault(n => n.ClientId == clientId).PlayerObject;
         if (clientPickup != null)
         {
             NetworkManager.Singleton.DisconnectClient(clientId);
-            clientPickup.Despawn();
+           // clientPickup.Despawn();
         }
     }
 }

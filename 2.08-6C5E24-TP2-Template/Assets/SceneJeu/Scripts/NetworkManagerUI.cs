@@ -43,6 +43,8 @@ public class NetworkManagerUI : NetworkBehaviour
         info += "Nombre de joueurs : " + clients.Count + "\n";
         foreach (NetworkClient client in clients)
         {
+            if(client.PlayerObject == null) continue;
+
             if (client.PlayerObject.GetComponent<PickupController>().vie.Value >0)
             {
                 info += "Player " + client.ClientId + " : " + client.PlayerObject.GetComponent<PickupController>().vie.Value + "\n";
